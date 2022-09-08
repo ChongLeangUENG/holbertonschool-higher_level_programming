@@ -18,10 +18,9 @@ if __name__ == '__main__':
 
         if argv[2] == "+":
             print("{} + {} = {}".format(a, b, add(a, b)))
-        if argv[2]== "-":
+        if argv[2] == "-":
             print("{} - {} = {}".format(a, b, sub(a, b)))
         if argv[2] == "*":
             print("{} * {} = {}".format(a, b, mul(a, b)))
         if argv[2] == "/":
             print("{} / {} = {}".format(a, b, div(a, b)))
-
