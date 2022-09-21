@@ -30,7 +30,7 @@ Traceback (most recent call last):
 TypeError: b must be an integer
 
 Case Missing one argument:
->>> add_integer(1, "School")
+>>> add_integer(4, "School")
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
