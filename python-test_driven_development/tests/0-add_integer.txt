@@ -16,7 +16,7 @@
 1
 
 >>> add_integer(-9, -1.6739)
--11
+-10
 
 >>> add_integer("33", 10)
 Traceback (most recent call last):
