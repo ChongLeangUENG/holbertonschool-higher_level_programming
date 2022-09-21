@@ -29,13 +29,13 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: b must be an integer
 
-Test present: missing one argument:
+Case Missing one argument:
 >>> add_integer(1, "School")
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
 
-Test present: missing two arguments:
+Case Missing two arguments:
 >>> add_integer("None")
 Traceback (most recent call last):
 ...
