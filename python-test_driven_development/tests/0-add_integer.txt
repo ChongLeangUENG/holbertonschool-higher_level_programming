@@ -12,10 +12,10 @@
 >>> add_integer(-200, -300)
 -500
 
->>> add_integer(5.11, -4)
-1
+>>> add_integer(5.11, -8)
+-3
 
->>> add_integer(-9, -1.0201)
+>>> add_integer(-9, -1.998)
 -10
 
 >>> add_integer(2.4, 2.4)
