@@ -15,7 +15,7 @@
 >>> add_integer(5.11, -4)
 1
 
->>> add_integer(-9, -1.6739)
+>>> add_integer(-9, -1.0201)
 -10
 
 >>> add_integer("33", 10)
