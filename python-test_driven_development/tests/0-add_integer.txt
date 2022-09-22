@@ -36,7 +36,7 @@ Case Missing one argument:
 Case Missing two arguments:
 >>> add_integer()
 Traceback (most recent call last):
-TypeError: a must be an integer
+TypeError: add_integer() missing 1 required positional argument: 'a'
 
 Case Overflow:
 >>> add_integer(float('inf'), 0)
