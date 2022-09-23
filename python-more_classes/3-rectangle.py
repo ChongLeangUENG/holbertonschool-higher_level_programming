@@ -56,11 +56,13 @@ class Rectangle:
         """Return the printable representation of the Rectangle
         print the rectangle with the character #
         """
+        string = ""
         if self.__width == 0 or self.__height == 0:
-            return ("")
-        rect = []
-        for i in range(self.__height):
-            [rect.append("#") for j in range(self.__width)]
-            if i != self.__height - 1:
-                rect.append("\n")
-        return ("".join(rect))
+            return string
+        else:
+            for i in range(self.__height):
+                for j in range(self.__width):
+                    string += '#'
+                if i != self.__height - 1:
+                    string += '\n'
+            return string
