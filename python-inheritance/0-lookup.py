@@ -7,6 +7,6 @@ def lookup(obj):
     and methods of an object
 
     Args:
-        obj: Object to return
+        obj: Object
     """
     return dir(obj)
