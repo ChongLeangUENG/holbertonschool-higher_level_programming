@@ -37,8 +37,7 @@ Traceback (most recent call last):
 TypeError: width must be an integer
 
 >>> base.integer_validator("width", True)
-Traceback (most recent call last):
-TypeError: width must be an integer
+
 
 >>> base.integer_validator("width", None)
 Traceback (most recent call last):
