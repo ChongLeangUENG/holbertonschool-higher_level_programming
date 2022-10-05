@@ -2,6 +2,7 @@
 """ Module that contains class Rectangle,
 inheritance of class Base
 """
+from ast import Raise
 from models.base import Base
 
 
@@ -15,3 +16,59 @@ class Rectangle(Base):
         self.x = x
         self.y = y
         super().__init__(id)
+
+    @property
+    def width(self):
+        """Width getter"""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Width setter"""
+        if type(value) is not int:
+            Raise TypeError("width must be an integer")
+        if value <= 0:
+            Raise ValueError("width must be > 0")
+        self.__width = value
+
+    @property
+    def height(self):
+        """Height setter"""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """Height setter"""
+        if type(value) is not int:
+            Raise TypeError("height must be an integer")
+        if value <= 0:
+            Raise ValueError("height must be > 0")
+        self.__height = value
+
+    @property
+    def x(self):
+        """X getter"""
+        return self.__x
+    
+    @x.setter
+    def x(self, value):
+        """X setter"""
+        if type(type) is not int:
+            Raise TypeError("x must be an integer")
+        if value < 0:
+            Raise ValueError("x must be >= 0")
+        self.__x = value
+
+    @property
+    def y(self):
+        """y getter"""
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """y setter"""
+        if type(value) is not int:
+            Raise TypeError("y must be an integer")
+        if value < 0:
+            Raise ValueError("y must be >= 0")
+    
