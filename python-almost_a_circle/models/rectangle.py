@@ -49,7 +49,7 @@ class Rectangle(Base):
     def x(self):
         """X getter"""
         return self.__x
-    
+
     @x.setter
     def x(self, value):
         """X setter"""
@@ -71,4 +71,3 @@ class Rectangle(Base):
             Raise TypeError("y must be an integer")
         if value < 0:
             Raise ValueError("y must be >= 0")
-    
