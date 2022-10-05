@@ -2,7 +2,7 @@
 """ Module that contains class rectangle,
 inheritance of class Base
 """
-from base import Base
+from models.base import Base
 
 
 class rectangle(Base):

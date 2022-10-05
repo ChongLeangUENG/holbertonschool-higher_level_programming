@@ -2,7 +2,7 @@
 """ Module that contains class Base """
 import json
 import csv
-import os.path
+import os
 
 
 class Base:
