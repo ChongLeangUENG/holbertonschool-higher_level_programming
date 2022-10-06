@@ -123,7 +123,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file1(self):
         """Test of Square.save_to_file([]) in Square exists"""
-        s = Rectangle.load_from_file()
+        s = Rectangle.save_to_file()
         self.assertEqual(s, [])
 
 
