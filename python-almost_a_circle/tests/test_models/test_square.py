@@ -119,10 +119,8 @@ class TestSquare(unittest.TestCase):
 
     def test_save_to_file_list_empty(self):
         """Test of Square.save_to_file([]) in Square exists"""
-        Square.save_to_file([])
-        with open("Square.json", mode="r") as read_file:
-            s = Square.load_from_file()
-            self.assertEqual(s, [])
+        s = Square.load_from_file()
+        self.assertEqual(s, [])
 
     def test_save_to_file_empty(self):
         """Test of Square.save_to_file([]) in Square exists"""
