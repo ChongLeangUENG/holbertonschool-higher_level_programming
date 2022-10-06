@@ -93,7 +93,7 @@ class Rectangle(Base):
 
         return str_rectangle + str_id + str_xy + str_wh
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update method"""
         if args is not None and len(args) != 0:
             list_atr = ['id', 'width', 'height', 'x', 'y']
