@@ -121,6 +121,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1_dict, {'x': 1, 'y': 9, 'id': 9,
                                    'height': 2, 'width': 10})
 
+    def test_save_to_file_list_empty(self):
+        """Test of Square.save_to_file([]) in Square exists"""
+        s = Rectangle.load_from_file()
+        self.assertEqual(s, [])
+
 
 if __name__ == "__main__":
     unittest.main()
