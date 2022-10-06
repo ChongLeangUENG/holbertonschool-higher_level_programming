@@ -2,6 +2,7 @@
 """ Module that contains class rectangle,
 inheritance of class Base
 """
+from curses.textpad import rectangle
 from models.base import Base
 
 
@@ -75,3 +76,11 @@ class Rectangle(Base):
     def area(self):
         """Calculate area of rectangle"""
         return self.__height * self.__width
+
+    def display(self):
+        """Display a rectangle"""
+        rectangle = self.y * "\n"
+        for i in range(self.height):
+            rectangle += (" " * self.x)
+            rectangle += ("#" * self.width) + "\n"
+        print(rectangle, end='')
