@@ -119,7 +119,7 @@ class TestSquare(unittest.TestCase):
 
     def test_save_to_file_list_empty(self):
         """Test of Square.save_to_file([]) in Square exists"""
-        s = Square.load_from_file()
+        s = Square.load_from_file([])
         self.assertEqual(s, [])
 
     def test_save_to_file_empty(self):
