@@ -54,7 +54,7 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == 'size':
-                    setattr(self, 'width', args[i])
-                    setattr(self, 'height', args[i])
+                    setattr(self, 'width', value)
+                    setattr(self, 'height', value)
                 else:
                     setattr(self, key, value)
