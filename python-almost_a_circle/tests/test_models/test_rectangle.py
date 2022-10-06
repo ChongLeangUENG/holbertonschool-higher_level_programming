@@ -121,6 +121,23 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1_dict, {'x': 1, 'y': 9, 'id': 9,
                                    'height': 2, 'width': 10})
 
+    def test_load_from_file(self):
+        """Test load JSON file"""
+        load_file = Rectangle.load_from_file()
+        self.assertEqual(load_file, [])
+
+    def test_load_from_file2(self):
+        """Test load JSON file"""
+        r1 = Rectangle(5, 5)
+        r2 = Rectangle(8, 2, 5, 5)
+
+        linput = [r1, r2]
+        Rectangle.save_to_file(linput)
+        loutput = Rectangle.load_from_file()
+
+        for i in range(len(linput)):
+            self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
 
 if __name__ == "__main__":
     unittest.main()
