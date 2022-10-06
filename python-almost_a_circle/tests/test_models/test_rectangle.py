@@ -365,3 +365,7 @@ class TestRectangleMethods(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
+
+if __name__ == '__main__':
+    unittest.main()
