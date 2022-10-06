@@ -33,10 +33,10 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-    """str special method"""
-    str_square = "[Square] "
-    str_id = "({}) ".format(self.id)
-    str_xy = "{}/{} - ".format(self.x, self.y)
-    str_size = "{}".format(self.size)
+        """str special method"""
+        str_square = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_size = "{}".format(self.size)
 
-    return str_square + str_id + str_xy + str_size
+        return str_square + str_id + str_xy + str_size
