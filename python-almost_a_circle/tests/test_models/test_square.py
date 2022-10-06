@@ -5,6 +5,7 @@ from unittest import mock
 import io
 import os
 from models.square import Square
+from models.rectangle import Rectangle
 
 
 class TestSquare(unittest.TestCase):
@@ -80,7 +81,7 @@ class TestSquare(unittest.TestCase):
         """Test str"""
 
         s = Square(1, 2)
-        self.assertEqual(s.__str__(), '[Square] (22) 2/0 - 1')
+        self.assertEqual(s.__str__(), '[Square] (23) 2/0 - 1')
 
     def test_created(self):
         """Test of Square.create(**{ 'id': 89 }) in Square exists"""
@@ -103,14 +104,38 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.y, 3)
 
     def test_load_from_file(self):
-        """Test of Square.save_to_file(None) in Square exists"""
+        """Test of Square.load_from_file(None) in Square exists"""
         Square.save_to_file(None)
         self.assertTrue(os.path.isfile('Square.json'))
 
         load_file = Square.load_from_file()
         self.assertEqual(len(load_file), 0)
 
+    def test_save_to_file(self):
+        """Test of Square.save_to_file(None) in Square exists"""
+        Square.save_to_file([Square(1)])
+        with open("Square.json", mode="r") as read_file:
+            s = read_file.read()
+            self.assertEqual(len(s), 39)
+
+    def test_save_to_file_list_empty(self):
         """Test of Square.save_to_file([]) in Square exists"""
+        Rectangle.save_to_file([])
+        with open("Square.json", mode="r") as read_file:
+            s = read_file.read()
+            self.assertEqual(s, "[]")
+
+    def test_save_to_file_empty(self):
+        """Test of Square.save_to_file([]) in Square exists"""
+        Square.save_to_file(None)
+        with open("Square.json", mode="r") as read_file:
+            s = read_file.read()
+            self.assertEqual(s, "[]")
+
+    def test_save_to_file_none(self):
+        """Test of Square.save_to_file([]) in Square exists"""
+        with self.assertRaises(Exception):
+            Square.save_to_file()
 
 
 if __name__ == "__main__":
