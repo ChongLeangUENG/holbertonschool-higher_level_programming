@@ -1,100 +1,67 @@
 #!/usr/bin/python3
-""" Module for test Base class """
+"Unit tests for Base class"
 import unittest
 from models.base import Base
-from models.square import Square
-from models.rectangle import Rectangle
-from io import StringIO
-from unittest import TestCase
-from unittest.mock import patch
 
 
-class TestBaseMethods(unittest.TestCase):
-    """ Suite to test Base class """
+class TestBase(unittest.TestCase):
+    "Unit tests suite for Base class"
 
-    def setUp(self):
-        """ Method invoked for each test """
-        Base._Base__nb_objects = 0
+    def test_constantId(self):
+        "Test of Base for correctly initializing an id"
+        b = Base(5)
+        self.assertEqual(b.id, 5)
 
-    def test_id(self):
-        """ Test assigned id """
-        new = Base(1)
-        self.assertEqual(new.id, 1)
+    def test_autoId(self):
+        "Test of Base for automatically assigning and incrementing an id"
+        b = Base()
+        self.assertEqual(b.id, 1)
 
-    def test_id_default(self):
-        """ Test default id """
-        new = Base()
-        self.assertEqual(new.id, 1)
+    def test_string(self):
+        """Test of Base for case input is string"""
+        b = Base("string")
+        self.assertEqual(b.id, "string")
 
-    def test_id_nb_objects(self):
-        """ Test nb object attribute """
-        new = Base()
-        new2 = Base()
-        new3 = Base()
-        self.assertEqual(new.id, 1)
-        self.assertEqual(new2.id, 2)
-        self.assertEqual(new3.id, 3)
+    def test_to_json_string(self):
+        """ Test to_json_string """
+        dic = {'id': 1, 'x': 2, 'y': 3, 'width': 4, 'height': 5}
+        json_dic = Base.to_json_string([dic])
+        self.assertTrue(isinstance(dic, dict))
+        self.assertTrue(isinstance(json_dic, str))
+        self.assertCountEqual(
+            json_dic, '{["id": 1, "x": 2, "y": 3, "width": 4, "height": 5]}')
+        json_d_1 = Base.to_json_string(None)
+        self.assertEqual(json_d_1, "[]")
+        err = ("to_json_string() missing 1 required positional argument: " +
+               "'list_dictionaries'")
+        with self.assertRaises(TypeError) as i:
+            Base.to_json_string()
+        self.assertEqual(err, str(i.exception))
+        err = "to_json_string() takes 1 positional argument but 2 were given"
+        with self.assertRaises(TypeError) as i:
+            Base.to_json_string([{1, 2}], [{3, 4}])
+        self.assertEqual(err, str(i.exception))
 
-    def test_id_mix(self):
-        """ Test nb object attributes and assigned id """
-        new = Base()
-        new2 = Base(1024)
-        new3 = Base()
-        self.assertEqual(new.id, 1)
-        self.assertEqual(new2.id, 1024)
-        self.assertEqual(new3.id, 2)
-
-    def test_string_id(self):
-        """ Test string id """
-        new = Base('1')
-        self.assertEqual(new.id, '1')
-
-    def test_more_args_id(self):
-        """ Test passing more args to init method """
-        with self.assertRaises(TypeError):
-            new = Base(1, 1)
-
-    def test_access_private_attrs(self):
-        """ Test accessing to private attributes """
-        new = Base()
-        with self.assertRaises(AttributeError):
-            new.__nb_objects
-
-    def test_save_to_file_1(self):
-        """ Test JSON file """
-        Square.save_to_file(None)
-        res = "[]\n"
-        with open("Square.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-
-        try:
-            os.remove("Square.json")
-        except:
-            pass
-
-        Square.save_to_file([])
-        with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-
-    def test_save_to_file_2(self):
-        """ Test JSON file """
-        Rectangle.save_to_file(None)
-        res = "[]\n"
-        with open("Rectangle.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-        try:
-            os.remove("Rectangle.json")
-        except:
-            pass
-
-        Rectangle.save_to_file([])
-        with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
+    def test_from_json_string(self):
+        """ Test from_json_string - check json string return to list """
+        string = '[{"id": 1, "x": 2, "y": 3, "width": 4, "height": 5}]'
+        json_str = Base.from_json_string(string)
+        self.assertTrue(isinstance(string, str))
+        self.assertTrue(isinstance(json_str, list))
+        self.assertCountEqual(
+            json_str, [{"id": 1, "x": 2, "y": 3, "width": 4, "height": 5}])
+        json_s_1 = Base.from_json_string(None)
+        self.assertEqual(json_s_1, [])
+        err = ("from_json_string() missing 1 required positional argument: " +
+               "'json_string'")
+        with self.assertRaises(TypeError) as i:
+            Base.from_json_string()
+        self.assertEqual(err, str(i.exception))
+        err = "from_json_string() takes 1 positional argument but 2 were given"
+        with self.assertRaises(TypeError) as i:
+            Base.from_json_string('[1]', '[2]')
+        self.assertEqual(err, str(i.exception))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
