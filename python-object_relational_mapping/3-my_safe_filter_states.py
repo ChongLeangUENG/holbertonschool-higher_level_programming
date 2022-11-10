@@ -9,7 +9,7 @@ if __name__ == '__main__':
                          db=sys.argv[3], port=3306)
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE name =%s;", (sys.argv[4],))
-    cur.states = cur.fetchall()
+    states = cur.fetchall()
 
     for state in states:
         print(state)
