@@ -13,4 +13,4 @@ if __name__ == '__main__':
             WHERE states.name = '{}';".format(sys.argv[4]))
     states = cur.fetchall()
 
-   print(", ".join([state[1] for state in states]))
+    print(", ".join([state[1] for state in states]))
